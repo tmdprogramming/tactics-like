@@ -10,7 +10,8 @@ public class Menu_Manager : MonoBehaviour
     public bool menu_move;
     public bool menu_attack;
     public bool menu_wait;
-    public bool draw_tiles;
+
+    
 
     public int top_boundary;
     public int bottom_boundary;
@@ -43,8 +44,6 @@ public class Menu_Manager : MonoBehaviour
                 Debug.Log("Hitting: " + hit.collider.tag);
                 if (hit.collider.tag == "menu_yes")
                 {
-                    draw_tiles = true;
-                    draw_tiles = false;
                     menu_yes = true;
 
                 }

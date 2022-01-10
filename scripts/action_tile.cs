@@ -34,4 +34,5 @@ public class action_tile : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sortingOrder++;
         }
     }
+    
 }

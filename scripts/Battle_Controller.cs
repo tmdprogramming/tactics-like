@@ -29,7 +29,7 @@ public class Battle_Controller : MonoBehaviour
     public Vector2 Difference;
     public Vector2 start;
 
-    //public selector selector;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +56,7 @@ public class Battle_Controller : MonoBehaviour
             }
 
             battle_menu_canvas.SetActive(true);
+            move_selector.transform.position = new Vector2(goesNext.transform.position.x, goesNext.transform.position.y +.4f);
             new_turn = false;
         }
         //move player to selector
@@ -76,12 +77,12 @@ public class Battle_Controller : MonoBehaviour
         }
         if (menu.menu_no && menu.menu_move)
         {
-            
+            move_selector.GetComponent<Move_Selector>().enabled = true;
             menu.menu_no = false;
             menu.menu_move = false;
             action_canvas.SetActive(false);
             battle_menu_canvas.SetActive(true);
-            move_selector.SetActive(true);
+            move_selector.SetActive(false);
         }
         if (menu.menu_yes && menu.menu_move)
         {
@@ -173,14 +174,15 @@ public class Battle_Controller : MonoBehaviour
             moved = false;
             attacked = false;
             new_turn = true;
-            main_camera.transform.position = new Vector3(goesNext.transform.position.x, goesNext.transform.position.y, main_camera.transform.position.z);
+           
         }
 
 
         //back to battle-menu
-        if (Input.GetKeyDown(KeyCode.V)) //V is to cancel back to battle-menu
+        if (Input.GetKeyDown(KeyCode.V)|| (menu.menu_wait && menu.menu_no)) //V is to cancel back to battle-menu
         {
             // set all tiles to false;
+            move_selector.GetComponent<Move_Selector>().enabled = true;
             menu.menu_attack = false;
             menu.menu_move = false;
             menu.menu_wait = false;
